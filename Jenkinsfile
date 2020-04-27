@@ -4,7 +4,7 @@ properties([
 
 //def publishable_branches = ["development", "master"]
 
-node('docker') {
+node('maître') {
   withEnv(["npm_config_cache=$WORKSPACE/.npm"]){
     stage('Build devicehive-admin-panel') {
       def node = docker.image('node:9')
