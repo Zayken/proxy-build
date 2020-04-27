@@ -2,7 +2,7 @@ properties([
   buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '7', numToKeepStr: '7'))
 ])
 
-def publishable_branches = ["development", "master"]
+//def publishable_branches = ["development", "master"]
 
 node('docker') {
   withEnv(["npm_config_cache=$WORKSPACE/.npm"]){
