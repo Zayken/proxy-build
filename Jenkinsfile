@@ -4,7 +4,7 @@ properties([
 
 //def publishable_branches = ["development", "master"]
 
-node('maître') {
+//node('maître') {
   withEnv(["npm_config_cache=$WORKSPACE/.npm"]){
     stage('Build devicehive-admin-panel') {
       def node = docker.image('node:9')
@@ -42,10 +42,10 @@ node('maître') {
       DevicehiveProxy.push()
     }
   }
-}
+//}
 
 if (publishable_branches.contains(env.BRANCH_NAME)) {
-  node('docker') {
+  //node('docker') {
     stage('Publish image in main repository') {
       // Builds from 'master' branch will have 'latest' tag
       def IMAGE_TAG = (env.BRANCH_NAME == 'master') ? 'latest' : env.BRANCH_NAME
@@ -57,5 +57,5 @@ if (publishable_branches.contains(env.BRANCH_NAME)) {
         """
       }
     }
-  }
+  //}
 }
